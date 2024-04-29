@@ -1,0 +1,40 @@
+enum Genre {
+    Fiction,
+    NonFiction,
+    Fantasy,
+    Biography,
+}
+
+struct Book {
+    title: String,
+    author: String,
+    year: u32,
+    genre: Genre,
+}
+
+
+fn new_book (title: &str, author: &str, year: u32, genre: Genre) -> Book {
+    Book {
+        title: title.to_string(),
+        author: author.to_string(),
+        year,
+        genre,
+    }
+}
+
+
+fn main() {
+    let book = new_book ("The Hobbit", "J.R.R. Tolkien", 1937, Genre::Fantasy);
+    
+    println!("Title: {}", book.title);
+    println!("Author: {}", book.author);
+    println!("Year: {}", book.year);
+    
+        
+    match book.genre {
+        Genre::Fiction => println!("This book is a work of Fiction"),
+        Genre::NonFiction => println!("This book is non-fiction"),
+        Genre::Fantasy => println!("This book is a fantasy."),
+        Genre::Biography => println!("This book is a biography"),
+    }    
+}
